@@ -9,12 +9,12 @@ export default function useForm(initial = {}) {
   // price: 1000
 
   function handleChange(e) {
-    const { value, name, type } = e.target;
+    let { value, name, type } = e.target;
     if (type === 'number') {
       value = parseInt(value);
     }
     if (type === 'file') {
-      value[0] = e.target.files;
+      [value] = e.target.files;
     }
     setInputs({
       // copy the existing state
